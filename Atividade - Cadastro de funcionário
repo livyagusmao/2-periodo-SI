@@ -1,0 +1,67 @@
+# Faça um programa que leia (cadastre) a partir do teclado as informações de  cada Funcionário
+# e armazene em um dicionário de Funcionários . O programa deverá exibir um MENU de opções 
+# (Cadastrar, Buscar pelo CPF, Listar Todos e Sair). Cada Funcionário deve ter as seguintes
+# informações:
+# Nome do Funcionário 
+# CPF 
+# Cargo
+# Telefone
+# Por fim, o programa deverá ter as opções de listar todos os Funcionários e buscar
+# Funcionário pelo CPF, cada opção dessas deverá ser uma função. Cada funcionário
+# deverá ser dicionário e deverá ser armazenado em uma lista de funcionários.
+
+Funcionario = []
+def menu():
+    while True:
+        print("-"*10)
+        print("1- Cadastrar \n2- Buscar \n3- Listar todos \n4- Sair")
+        print("-"*10)
+        op = int(input("Digite uma opção: "))
+        if op == 1:
+            cadastro()
+        if op == 2:
+            entrada = int(input("Deseja buscar por: \n1- Nome do funcionário \n2- CPF \n3- Cargo \n4- Telefone"))
+            buscar(entrada)
+        if op == 3:
+            for m in Funcionario:
+                print(f"\nNome: {m[0]}, CPF: {m[1]}, Cargo: {m[2]}, Telefone: {m[3]}")
+        if op == 4:
+            print ("Saindo.")
+            break
+def cadastro():
+    nome = input("Digite o nome do funcionário: ")
+    cpf = int(input("Digite o CPF: "))
+    cargo = input("Digite o cargo do funcionário: ")
+    telefone = int(input("Digite o telefone: "))
+    info = [nome, cpf, cargo, telefone]
+    Funcionario.append(info)
+
+def buscar(entrada):
+    if entrada == 1:
+        nome = input("Digite o nome do funcionário: ")
+        for n in Funcionario:
+            if nome == n[0]:
+                print (n)
+            else:
+                print ("Funcionário não cadastrado!")
+                cadastro()
+
+    if entrada == 2:
+        cpf = int(input("Digite o CPF do funcionário: "))
+        for c in Funcionario:
+            if cpf == c[1]:
+                print (c)
+
+    if entrada == 3:
+        cargo = input("Digite o cargo do funcionário: ")
+        for g in Funcionario:
+            if cargo == g[2]:
+                print (g)
+    
+    if entrada == 4:
+        telefone = int(input("Digite o telefone do funcionário: "))
+        for t in Funcionario:
+            if telefone == t[3]:
+                print (t)
+    
+menu()
